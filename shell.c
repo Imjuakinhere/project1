@@ -108,9 +108,9 @@ int main(int argc, char **argv)
 		}
 		else if (strlen(buffer) > 2)
 		{
-			lastcmd[num - 1] = malloc(strlen(buffer) + 1);
+			last_cmd[num - 1] = malloc(strlen(buffer) + 1);
 			strcpy(last_cmd[num - 1], buffer);
-		}*
+		}
 
 		parser_state = STATE_SPACE;
 		for (exec_argc = 0, i = 0;
@@ -169,7 +169,7 @@ int main(int argc, char **argv)
 				// TO-DO P5.6 
 				if (!strcmp(exec_argv[0], "sub"))
 				{
-					counter = 1;
+					num = 1;
 					track_num++;
 					shell_pid = getpid();
 					if (track_num >= 3)

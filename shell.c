@@ -79,7 +79,7 @@ int main(int argc, char **argv)
 	// TO-DO new variables for P5.2, P5.3, P5.6
 
 	//keep track of increment variable
-	int c=1;
+	int track=1;
 
 	char comms[14][50];
 
@@ -109,11 +109,11 @@ int main(int argc, char **argv)
 		if(buffer[0]=='!'){
 
 			//variables 
-			int k;
+			int x;
 			buffer[0] = ' ';
-            k = atoi(buffer);
+            x = atoi(buffer);
 
-            if(k < c){
+            if(x < track){
             	strncpy(buffer, comms[k],30);
             	strcat(buffer,"\n");
             }
@@ -125,7 +125,7 @@ int main(int argc, char **argv)
 		/* Parse the arguments: the first argument is the file or command *
 		 * we want to run. 
 		 */
-		strcpy(comms[c], buffer);
+		strcpy(comms[track], buffer);
 
 		parser_state = STATE_SPACE;
 
@@ -155,7 +155,7 @@ int main(int argc, char **argv)
 		exec_argv[exec_argc] = NULL;
 
 		//increment variable that I was using to keep track of count 
-		c=c+1;
+		track=track+1;
 
 		/* If Shell runs 'exit' it exits the program. */
 		if (!strcmp(exec_argv[0], "exit")) {

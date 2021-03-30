@@ -95,7 +95,7 @@ int main(int argc, char **argv)
 	/* The Shell runs in an infinite loop, processing input. */
 
 		// TO-DO P5.2
-		fprintf(stdout, "Shell(pid=%d)%d> ", shell_pid, c);
+		fprintf(stdout, "Shell(pid=%d)%d> ", shell_pid, track);
 		fflush(stdout);
 
 		/* Read a line of input. */
@@ -114,7 +114,7 @@ int main(int argc, char **argv)
             x = atoi(buffer);
 
             if(x < track){
-            	strncpy(buffer, comms[k],30);
+            	strncpy(buffer, comms[x],30);
             	strcat(buffer,"\n");
             }
             else{

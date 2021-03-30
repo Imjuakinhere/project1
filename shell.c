@@ -84,7 +84,8 @@ int main(int argc, char **argv)
 	char comms[14][50];
 
 	/* Entrypoint for the testrunner program */
-	if (argc > 1 && !strcmp(argv[1], "-test")) {
+	if (argc > 1 && !strcmp(argv[1], "-test")) 
+	{
 		return run_smp1_tests(argc - 1, argv + 1);
 	}
 
@@ -113,11 +114,13 @@ int main(int argc, char **argv)
 			buffer[0] = ' ';
             x = atoi(buffer);
 
-            if(x < track){
+            if(x < track)
+			{
             	strncpy(buffer, comms[x],30);
             	strcat(buffer,"\n");
             }
-            else{
+            else
+			{
                 fprintf(stderr,"Not Valid\n");
                 continue;
             }
@@ -154,8 +157,8 @@ int main(int argc, char **argv)
 		/* Terminate the list of exec parameters with NULL */
 		exec_argv[exec_argc] = NULL;
 
-		//increment variable that I was using to keep track of count 
-		track=track+1;
+		//increment track 
+		track += 1;
 
 		/* If Shell runs 'exit' it exits the program. */
 		if (!strcmp(exec_argv[0], "exit")) {

@@ -26,7 +26,7 @@ int imthechild(const char *path_to_exec, char *const args[])
 	// TO-DO P5.1
 	//can use 'ls' instead of '/bin/ls'
 	if( (execv(path_to_exec,args) ? -1 : 0) == -1){
-		char ** diffPath[50];
+		char diffPath[50];
 		//bin
 		strcpy(diffPath, "/bin/");
 		strcat(diffPath,path_to_exec);

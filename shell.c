@@ -28,8 +28,8 @@ int imthechild(const char *path_to_exec, char *const args[])
 	if( (execv(path_to_exec,args) ? -1 : 0) == -1){
 		char* diffPath[50];
 		//bin
-		strcpy(diffPath, "/bin/");
-		strcat(diffPath,path_to_exec);
+		* strcpy(diffPath, "/bin/");
+		* strcat(diffPath,path_to_exec);
 
 		return printf("With path: %d",execv(diffPath,args)? -1:0);
 	}

@@ -1,3 +1,6 @@
+// Name:Joaquin Garcia
+// Id: 20410250
+
 /* SMP1: Simple Shell */
 
 /* LIBRARY SECTION */
@@ -19,7 +22,6 @@
 enum { STATE_SPACE, STATE_NON_SPACE };	/* Parser states */
 
 int x = 0;
-
 
 int imthechild(const char *path_to_exec, char *const args[])
 {
@@ -191,10 +193,9 @@ int main(int argc, char **argv)
 					shell_pid = getpid();
 					if(x >= 3)
 					{
-						fprintf(stderr, "Go back\n");
+						fprintf(stderr, "Too deep!\n");
 						return 0;
 					}
-
 				}
 				else{
 

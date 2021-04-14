@@ -188,7 +188,7 @@ int main(int argc, char **argv)
 					track =1;
 					x++;
 					shell_pid = getpid();
-					if(x > 4)
+					if(x >= 3)
 					{
 						fprintf(stderr, "Go back\n");
 						return 0;

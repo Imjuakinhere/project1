@@ -1,5 +1,6 @@
 /* SMP1: Simple Shell */
 
+
 /* LIBRARY SECTION */
 #include <ctype.h>              /* Character types                       */
 #include <stdio.h>              /* Standard buffered input/output        */
@@ -189,15 +190,16 @@ int main(int argc, char **argv)
 				// TO-DO P5.6
 				if (!strcmp(exec_argv[0],"sub")){
 
-					track = 1;
-				
+					track =1;
+					length++;
 					shell_pid = getpid();
-			
-						fprintf(stderr, "Too deep!\n");
-						return 0;
-				
+					if(length >= 3)
+					{
+						return fprintf(stderr, "too far!\n");
+					}
 				}
 				else{
+
 					return imthechild(exec_argv[0],&exec_argv[0]);
 					/* Exit from main. */
 				}

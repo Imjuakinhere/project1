@@ -185,9 +185,13 @@ int main(int argc, char **argv)
 				// TO-DO P5.6
 				if (!strcmp(exec_argv[0],"sub")){
 
-					exec_argv[0]="./a.out";
-					fprintf(stdout,"SUB: %s ; Deep%d\n",exec_argv[0],x);
-					return 0;
+					track =1;
+					x++;
+					shell_pid = getpid();
+					if(x > 4)
+					{
+						return fprintf(stderr, "Go back\n");
+					}
 
 				}
 				else{

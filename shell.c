@@ -190,7 +190,8 @@ int main(int argc, char **argv)
 					shell_pid = getpid();
 					if(x > 4)
 					{
-						return fprintf(stderr, "Go back\n");
+						fprintf(stderr, "Go back\n");
+						return 0;
 					}
 
 				}

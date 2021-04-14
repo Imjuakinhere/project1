@@ -29,9 +29,9 @@ int imthechild(const char *path_to_exec, char *const args[])
 		char *newpath[50];
 		//bin
 		strcpy(newpath, "/bin/");
-		strcat(newpath,path_to_exec);
+		strcat(newpath, path_to_exec);
 
-		return printf("The path: %d",execv(newpath,args)? -1 : 0);
+		return printf("path: %d",execv(newpath,args) ? -1 : 0);
 	}
 	else{
 		return 0;
@@ -154,7 +154,7 @@ int main(int argc, char **argv)
 		exec_argv[exec_argc] = NULL;
 
 		//increment track 
-		track += 1;
+		track++;
 
 		/* If Shell runs 'exit' it exits the program. */
 		if (!strcmp(exec_argv[0], "exit")) {

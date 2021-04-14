@@ -19,7 +19,7 @@
 /* VARIABLE SECTION */
 enum { STATE_SPACE, STATE_NON_SPACE };	/* Parser states */
 
-static int length = 0;
+ int length = 0;
 
 
 int imthechild(const char *path_to_exec, char *const args[])
@@ -113,7 +113,7 @@ int main(int argc, char **argv)
 			//variables 
 			int x;
 			buffer[0] = ' ';
-            x = atoi(buffer);
+            x = atoi(buffer +1 );
 
             if(x < track)
 			{
@@ -190,7 +190,7 @@ int main(int argc, char **argv)
 				// TO-DO P5.6
 				if (!strcmp(exec_argv[0],"sub")){
 
-					track =1;
+					track = 1;
 					length++;
 					shell_pid = getpid();
 					if(length >= 3)

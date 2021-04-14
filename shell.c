@@ -189,10 +189,14 @@ int main(int argc, char **argv)
 				// TO-DO P5.6
 				if (!strcmp(exec_argv[0],"sub")){
 
-					exec_argv[0]="./a.out";
-					fprintf(stdout,"SUB: %s ; Deep%d\n",exec_argv[0],length);
-					return 0;
-
+					track = 1;
+					num++;
+					shell_pid = getpid();
+					if (num >= 3)
+					{
+						fprintf(stderr, "Too deep!\n");
+						return 0;
+					}
 				}
 				else{
 					return imthechild(exec_argv[0],&exec_argv[0]);

@@ -1,6 +1,5 @@
 /* SMP1: Simple Shell */
 
-
 /* LIBRARY SECTION */
 #include <ctype.h>              /* Character types                       */
 #include <stdio.h>              /* Standard buffered input/output        */
@@ -19,7 +18,8 @@
 /* VARIABLE SECTION */
 enum { STATE_SPACE, STATE_NON_SPACE };	/* Parser states */
 
- int x = 0;
+static int length = 0;
+
 
 int imthechild(const char *path_to_exec, char *const args[])
 {
@@ -79,9 +79,9 @@ int main(int argc, char **argv)
 	// TO-DO new variables for P5.2, P5.3, P5.6
 
 	//keep track of increment variable
+	int track=1;
 
-	int track = 1;
-	char *cmdlast[9];
+	char comms[14][50];
 
 	/* Entrypoint for the testrunner program */
 	if (argc > 1 && !strcmp(argv[1], "-test")) 
@@ -107,28 +107,28 @@ int main(int argc, char **argv)
 		buffer[n_read - run_in_background - 1] = '\n';
 
 		// TO-DO P5.3
+		if(buffer[0]=='!'){
+
+			//variables 
+			int x;
+			buffer[0] = ' ';
+            x = atoi(buffer);
+
+            if(x < track)
+			{
+            	strncpy(buffer, comms[x],30);
+            	strcat(buffer,"\n");
+            }
+            else
+			{
+                fprintf(stderr,"Not Valid\n");
+                continue;
+            }
+		}
 		/* Parse the arguments: the first argument is the file or command *
 		 * we want to run. 
 		 */
-		if (*buffer == '!' && track <= 9)
-		{
-			int i = atoi(buffer + 1);
-			if (i >= track || i <= 0)
-			{
-				fprintf(stderr, "Not valid\n");
-				continue;
-			}
-			else
-			{
-				strcpy(buffer, cmdlast[i - 1]);
-				cmdlast[track - 1] = cmdlast[i - 1];
-			}
-		}
-		else if (strlen(buffer) > 2)
-		{
-			cmdlast[track - 1] = malloc(strlen(buffer) + 1);
-			strcpy(cmdlast[track - 1], buffer);
-		}
+		strcpy(comms[track], buffer);
 
 		parser_state = STATE_SPACE;
 
@@ -158,7 +158,7 @@ int main(int argc, char **argv)
 		exec_argv[exec_argc] = NULL;
 
 		//increment track 
-		track++;
+		track += 1;
 
 		/* If Shell runs 'exit' it exits the program. */
 		if (!strcmp(exec_argv[0], "exit")) {
@@ -189,18 +189,15 @@ int main(int argc, char **argv)
 				// TO-DO P5.6
 				if (!strcmp(exec_argv[0],"sub")){
 
-					track = 1;
-					x++;
-					shell_pid = getpid();
-					if(x >= 3)
-					{
-						fprintf(stderr, "too far!\n");
-						return 0;
-					}
+					exec_argv[0]="./a.out";
+					fprintf(stdout,"SUB: %s ; Deep%d\n",exec_argv[0],length);
+					return 0;
+
 				}
 				else{
-
+					fprintf(stdout,"TEST-FAILED");
 					return imthechild(exec_argv[0],&exec_argv[0]);
+
 					/* Exit from main. */
 				}
 			} else {

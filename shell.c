@@ -190,13 +190,12 @@ int main(int argc, char **argv)
 				if (!strcmp(exec_argv[0],"sub")){
 
 					track = 1;
-					num++;
+				
 					shell_pid = getpid();
-					if (num >= 3)
-					{
+			
 						fprintf(stderr, "Too deep!\n");
 						return 0;
-					}
+				
 				}
 				else{
 					return imthechild(exec_argv[0],&exec_argv[0]);

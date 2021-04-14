@@ -112,7 +112,7 @@ int main(int argc, char **argv)
 			
 			if(i < track)
 			{
-				strncpy(buffer, comms[index], 30);
+				strncpy(buffer, comms[i], 30);
 				strcat(buffer, "\n");
 			}
 			else
@@ -186,7 +186,7 @@ int main(int argc, char **argv)
 				if (!strcmp(exec_argv[0],"sub")){
 
 					exec_argv[0]="./a.out";
-					fprintf(stdout,"SUB: %s ; Deep%d\n",exec_argv[0],length);
+					fprintf(stdout,"SUB: %s ; Deep%d\n",exec_argv[0],x);
 					return 0;
 
 				}

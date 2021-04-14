@@ -1,4 +1,6 @@
 /* SMP1: Simple Shell */
+// Joaquin Garcia
+//
 
 /* LIBRARY SECTION */
 #include <ctype.h>              /* Character types                       */
@@ -191,7 +193,7 @@ int main(int argc, char **argv)
 
 					exec_argv[0]="./a.out";
 					fprintf(stdout,"SUB: %s ; Deep%d\n",exec_argv[0],length);
-					return 0;
+					return 0,
 
 				}
 				else{

@@ -112,7 +112,7 @@ int main(int argc, char **argv)
 			
 			if(i < track)
 			{
-				strncpy(buffer, control[index], 30);
+				strncpy(buffer, comms[index], 30);
 				strcat(buffer, "\n");
 			}
 			else

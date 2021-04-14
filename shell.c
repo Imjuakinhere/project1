@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 	// TO-DO new variables for P5.2, P5.3, P5.6
 	char comms[20][20];
 	//keep track of increment variable
-	int track = 1;
+	int track = 0;
 	
 	/* Entrypoint for the testrunner program */
 	if (argc > 1 && !strcmp(argv[1], "-test")) 

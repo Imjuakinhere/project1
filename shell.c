@@ -81,7 +81,6 @@ int main(int argc, char **argv)
 	//keep track of increment variable
 
 	int track = 1;
-	char cmdnum[9];
 	char *cmdlast[9];
 
 	/* Entrypoint for the testrunner program */
@@ -195,7 +194,8 @@ int main(int argc, char **argv)
 					shell_pid = getpid();
 					if(x >= 3)
 					{
-						return fprintf(stderr, "too far!\n");
+						fprintf(stderr, "too far!\n");
+						return 0;
 					}
 				}
 				else{

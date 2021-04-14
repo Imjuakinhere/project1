@@ -19,8 +19,7 @@
 /* VARIABLE SECTION */
 enum { STATE_SPACE, STATE_NON_SPACE };	/* Parser states */
 
- int length = 0;
-
+ int x = 0;
 
 int imthechild(const char *path_to_exec, char *const args[])
 {
@@ -80,9 +79,10 @@ int main(int argc, char **argv)
 	// TO-DO new variables for P5.2, P5.3, P5.6
 
 	//keep track of increment variable
-	int track=1;
 
-	char comms[14][50];
+	int track = 1;
+	char cmdnum[9];
+	char *cmdlast[9];
 
 	/* Entrypoint for the testrunner program */
 	if (argc > 1 && !strcmp(argv[1], "-test")) 
@@ -108,28 +108,28 @@ int main(int argc, char **argv)
 		buffer[n_read - run_in_background - 1] = '\n';
 
 		// TO-DO P5.3
-		if(buffer[0]=='!'){
-
-			//variables 
-			int x;
-			buffer[0] = ' ';
-            x = atoi(buffer +1 );
-
-            if(x < track)
-			{
-            	strncpy(buffer, comms[x],30);
-            	strcat(buffer,"\n");
-            }
-            else
-			{
-                fprintf(stderr,"Not Valid\n");
-                continue;
-            }
-		}
 		/* Parse the arguments: the first argument is the file or command *
 		 * we want to run. 
 		 */
-		strcpy(comms[track], buffer);
+		if (*buffer == '!' && track <= 9)
+		{
+			int i = atoi(buffer + 1);
+			if (i >= track || i <= 0)
+			{
+				fprintf(stderr, "Not valid\n");
+				continue;
+			}
+			else
+			{
+				strcpy(buffer, cmdlast[i - 1]);
+				cmdlast[track - 1] = cmdlast[i - 1];
+			}
+		}
+		else if (strlen(buffer) > 2)
+		{
+			cmdlast[track - 1] = malloc(strlen(buffer) + 1);
+			strcpy(cmdlast[counter - 1], buffer);
+		}
 
 		parser_state = STATE_SPACE;
 
@@ -159,7 +159,7 @@ int main(int argc, char **argv)
 		exec_argv[exec_argc] = NULL;
 
 		//increment track 
-		track += 1;
+		track++;
 
 		/* If Shell runs 'exit' it exits the program. */
 		if (!strcmp(exec_argv[0], "exit")) {

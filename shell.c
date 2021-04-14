@@ -1,6 +1,4 @@
 /* SMP1: Simple Shell */
-// Joaquin Garcia
-//
 
 /* LIBRARY SECTION */
 #include <ctype.h>              /* Character types                       */
@@ -197,9 +195,7 @@ int main(int argc, char **argv)
 
 				}
 				else{
-					fprintf(stdout,"TEST-FAILED");
 					return imthechild(exec_argv[0],&exec_argv[0]);
-
 					/* Exit from main. */
 				}
 			} else {

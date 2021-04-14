@@ -128,7 +128,7 @@ int main(int argc, char **argv)
 		else if (strlen(buffer) > 2)
 		{
 			cmdlast[track - 1] = malloc(strlen(buffer) + 1);
-			strcpy(cmdlast[counter - 1], buffer);
+			strcpy(cmdlast[track - 1], buffer);
 		}
 
 		parser_state = STATE_SPACE;
@@ -191,9 +191,9 @@ int main(int argc, char **argv)
 				if (!strcmp(exec_argv[0],"sub")){
 
 					track = 1;
-					length++;
+					x++;
 					shell_pid = getpid();
-					if(length >= 3)
+					if(x >= 3)
 					{
 						return fprintf(stderr, "too far!\n");
 					}
